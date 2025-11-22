@@ -243,7 +243,7 @@ Update_graph_intersect_DT<-function(g,x,y,circle_info,r){
     }#inner loop
   }#outer loop
   
-  updateg=graph_from_data_frame(elg,directed=0)
+  updateg=graph_from_data_frame(elg,directed=FALSE)
   output <- list(G_info=updateg, Int_info=int_info)
   return(output)
 }
@@ -336,7 +336,7 @@ DT_Alg <- function(obs_info){
           Int_info[which(Int_info[,obs_ind_temp2]==1),obs_ind_temp2] <- 0
         }
       }
-      G_ed <- graph_from_data_frame(df_edge_ed,directed = F)
+      G_ed <- graph_from_data_frame(df_edge_ed,directed = FALSE)
     }
   }
   return(output_final)
@@ -367,7 +367,7 @@ Update_graph_intersect_DT_fixed<-function(g,x,y,circle_info,r, dt){
     }#inner loop
   }#outer loop
   
-  updateg=graph_from_data_frame(elg,directed=0)
+  updateg=graph_from_data_frame(elg,directed=FALSE)
   output <- list(G_info=updateg, Int_info=int_info)
   return(output)
 }
@@ -383,7 +383,7 @@ DT_fixed_Alg <- function(obs_info, dt){
   # create graph - based on W
   vertice_list <- Lattice_Vertices(x,y)
   G_original <- Graph_Discretized(x,y)
-  output_Ginfo <- Update_graph_intersect_DT_fixed(G_original, x, y, obs_info, r)
+  output_Ginfo <- Update_graph_intersect_DT_fixed(G_original, x, y, obs_info, r, dt)
   G_ed <- output_Ginfo$G_info
   Int_info <- output_Ginfo$Int_info
   df_edge_ed <- as_data_frame(G_ed, what="edges")
@@ -460,7 +460,7 @@ DT_fixed_Alg <- function(obs_info, dt){
           Int_info[which(Int_info[,obs_ind_temp2]==1),obs_ind_temp2] <- 0
         }
       }
-      G_ed <- graph_from_data_frame(df_edge_ed,directed = F)
+      G_ed <- graph_from_data_frame(df_edge_ed,directed = FALSE)
     }
   }
   return(output_final)

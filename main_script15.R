@@ -16,7 +16,8 @@ for(qq in the_ratio){
     Run = integer(),
     Length = numeric(),
     Cost = numeric(),
-    NumDisambigs = integer()
+    NumDisambigs = integer(),
+    Path = integer()
   )
   
   for (i in 1:100) {
@@ -30,7 +31,7 @@ for(qq in the_ratio){
       Length = result$Length_total,
       Cost = result$Cost_total,
       NumDisambigs = length(result$Disambiguate_state),
-      Path = result$Optimal_path
+      Path = list(result$Optimal_path)
     )
   }
   
@@ -38,10 +39,10 @@ for(qq in the_ratio){
   
   results_out <- data.frame(
     Index = paste0('"', 1:nrow(results), '"'),
-    results[, c("Length", "Cost", "NumDisambigs", "Path")]
+    results[, c("Length", "Cost", "NumDisambigs")]
   )
   
-  header <- '"length" "cost" "number_of_disambiguations" "path"'
+  header <- '"length" "cost" "number_of_disambiguations"'
   
   txt_path <- file.path(output_dir, paste0("results_DT15_CSR_", qq, ".txt"))
   
@@ -56,4 +57,9 @@ for(qq in the_ratio){
     quote = FALSE,
     sep = " "
   )
+  
+  file_name <- file.path(output_dir, paste0("results_DT15_CSR_", qq, ".rds"))
+  saveRDS(results[, "Path"], file = file_name)
+  
+  
 }
