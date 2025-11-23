@@ -44,7 +44,7 @@ for(qq in the_ratio){
   
   header <- '"length" "cost" "number_of_disambiguations"'
   
-  txt_path <- file.path(output_dir, paste0("results_DT0_CSR_", qq, ".txt"))
+  txt_path <- file.path(output_dir, paste0("results_DT_CSR_", qq, ".txt"))
   
   writeLines(header, txt_path)
   
@@ -58,7 +58,7 @@ for(qq in the_ratio){
     sep = " "
   )
   
-  file_name <- file.path(output_dir, paste0("results_DT100_CSR_", qq, ".rds"))
+  file_name <- file.path(output_dir, paste0("results_DT_CSR_", qq, ".rds"))
   saveRDS(results[, "Path"], file = file_name)
   
   
