@@ -313,7 +313,7 @@ DT_Alg <- function(obs_info){
         } else{
           dt <- Dist_Euclidean(as.numeric(obs_info[obs_ind_temp,1:2]),c(50,1))
           # adjust based on false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp]==1),3]+
+          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp]==1),3]-
                                                                     0.5*(obs_info[obs_ind_temp,3]+(dt/(1-obs_info[obs_ind_temp,4]))^(-log(1-obs_info[obs_ind_temp,4]))))
           Int_info[which(Int_info[,obs_ind_temp]==1),obs_ind_temp] <- 0 
         }
@@ -331,7 +331,7 @@ DT_Alg <- function(obs_info){
         } else{
           dt <- Dist_Euclidean(as.numeric(obs_info[obs_ind_temp2,1:2]),c(50,1))
           # false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3]+
+          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3]-
                                                                      0.5*(obs_info[obs_ind_temp2,3]+(dt/(1-obs_info[obs_ind_temp2,4]))^(-log(1-obs_info[obs_ind_temp2,4]))))
           Int_info[which(Int_info[,obs_ind_temp2]==1),obs_ind_temp2] <- 0
         }
@@ -437,7 +437,7 @@ DT_fixed_Alg <- function(obs_info, dt){
         } else{
           
           # adjust based on false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp]==1),3]+
+          df_edge_ed[which(Int_info[,obs_ind_temp]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp]==1),3]-
                                                                     0.5*(obs_info[obs_ind_temp,3]+(dt/(1-obs_info[obs_ind_temp,4]))^(-log(1-obs_info[obs_ind_temp,4]))))
           Int_info[which(Int_info[,obs_ind_temp]==1),obs_ind_temp] <- 0 
         }
@@ -455,7 +455,7 @@ DT_fixed_Alg <- function(obs_info, dt){
         } else{
           
           # false obstacle
-          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3]+
+          df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3] <- pmax(0, df_edge_ed[which(Int_info[,obs_ind_temp2]==1),3]-
                                                                      0.5*(obs_info[obs_ind_temp2,3]+(dt/(1-obs_info[obs_ind_temp2,4]))^(-log(1-obs_info[obs_ind_temp2,4]))))
           Int_info[which(Int_info[,obs_ind_temp2]==1),obs_ind_temp2] <- 0
         }
