@@ -862,6 +862,15 @@ Update_graph_intersect_AP<-function(g,x,y,circle_info,r){
     
     for(j in 1:n1){
       index=which((elg[,1]==el[j,1] & elg[,2]==el[j,2]))
+      ###
+      if(circle_info[i,4] <= 0){
+        circle_info[i,4] <- 0.01
+      }
+      if(circle_info[i,4] >= 1){
+        circle_info[i,4] <- 0.99
+      }
+      
+      ###
       elg[index,3] <- elg[index,3]+0.5*(circle_info[i,3] + (5*circle_info[i,4])/(1-(circle_info[i,4])^(1-circle_info[i,4]))  )
       int_info[index, i] <- 1
     }#inner loop
