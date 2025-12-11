@@ -634,7 +634,7 @@ RD_Alg <- function(obs_info){
   # create graph - based on W
   vertice_list <- Lattice_Vertices(x,y)
   G_original <- Graph_Discretized(x,y)
-  output_Ginfo <- Update_graph_intersect_DT(G_original, x, y, obs_info, r)
+  output_Ginfo <- Update_graph_intersect_RD(G_original, x, y, obs_info, r)
   G_ed <- output_Ginfo$G_info
   Int_info <- output_Ginfo$Int_info
   df_edge_ed <- as_data_frame(G_ed, what="edges")
@@ -759,7 +759,7 @@ SR_Alg <- function(obs_info){
   # create graph - based on W
   vertice_list <- Lattice_Vertices(x,y)
   G_original <- Graph_Discretized(x,y)
-  output_Ginfo <- Update_graph_intersect_DT(G_original, x, y, obs_info, r)
+  output_Ginfo <- Update_graph_intersect_SR(G_original, x, y, obs_info, r)
   G_ed <- output_Ginfo$G_info
   Int_info <- output_Ginfo$Int_info
   df_edge_ed <- as_data_frame(G_ed, what="edges")
@@ -883,7 +883,7 @@ AP_Alg <- function(obs_info){
   # create graph - based on W
   vertice_list <- Lattice_Vertices(x,y)
   G_original <- Graph_Discretized(x,y)
-  output_Ginfo <- Update_graph_intersect_DT(G_original, x, y, obs_info, r)
+  output_Ginfo <- Update_graph_intersect_AP(G_original, x, y, obs_info, r)
   G_ed <- output_Ginfo$G_info
   Int_info <- output_Ginfo$Int_info
   df_edge_ed <- as_data_frame(G_ed, what="edges")
